@@ -1,5 +1,4 @@
 class Import::Teller
-
   BASE_URL = "https://api.teller.io"
 
   def initialize(access_token, teller_account_id, ynab_account_id)
@@ -10,9 +9,9 @@ class Import::Teller
 
   def import
     transactions_to_create = []
-    transactions.select{|t| Date.parse(t[:date]) <= Date.today }.each do |transaction|
+    transactions.select { |t| Date.parse(t[:date]) <= Date.today }.each do |transaction|
       transactions_to_create << {
-        id: "TELLER:" + transaction[:id],
+        id: "T#{transaction[:id]}",
         amount: (transaction[:amount].to_f * 1000).to_i,
         payee_name: transaction[:counterparty],
         date: Date.parse(transaction[:date]),
