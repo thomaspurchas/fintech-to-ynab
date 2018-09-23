@@ -46,7 +46,7 @@ class MonzoController < ApplicationController
     ynab_creator = YNAB::TransactionCreator.new(
       id: "MONZO:" + webhook[:data][:id],
       date: Time.parse(webhook[:data][:created]).to_date,
-      amount: amount,
+      amount: amount.round(half: :even),
       payee_name: payee_name,
       description: description.strip,
       cleared: !foreign_transaction,

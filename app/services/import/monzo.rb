@@ -113,7 +113,7 @@ class Import::Monzo
 
     {
       id: "MONZO:#{transaction[:id]}",
-      amount: amount,
+      amount: amount.round(half: :even),
       payee_name: payee_name(transaction),
       date: Time.parse(transaction[:created]).to_date,
       description: description,
