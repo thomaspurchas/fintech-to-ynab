@@ -116,7 +116,7 @@ class Import::Monzo
       amount: amount.round(half: :even),
       payee_name: payee_name(transaction),
       date: Time.parse(transaction[:created]).to_date,
-      description: "£#{original_amount}: #{description}",
+      description: "£#{original_amount/1000.0}: #{description}",
       cleared: transaction[:settled].present? ? 'Cleared' : 'Uncleared',
       flag: flag
     }

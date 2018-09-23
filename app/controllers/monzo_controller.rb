@@ -48,7 +48,7 @@ class MonzoController < ApplicationController
       date: Time.parse(webhook[:data][:created]).to_date,
       amount: amount.round(half: :even),
       payee_name: payee_name,
-      description: "£#{original_amount}: #{description.strip}",
+      description: "£#{original_amount/1000.0}: #{description.strip}",
       cleared: !foreign_transaction,
       flag: flag,
       account_id: ynab_account_id
