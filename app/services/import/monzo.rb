@@ -105,10 +105,10 @@ class Import::Monzo
   def transaction_hash(transaction)
     description, flag = description_and_flag(transaction)
 
-    amount = transaction[:amount] * 10
+    original_amount = transaction[:amount] * 10
 
     if ENV['MONZO_AMOUNT_MULTIPLIER'].present?
-      amount = amount * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
+      amount = original_amount * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
     end
 
     {
@@ -116,7 +116,7 @@ class Import::Monzo
       amount: amount.round(half: :even),
       payee_name: payee_name(transaction),
       date: Time.parse(transaction[:created]).to_date,
-      description: description,
+      description: "£#{original_amount}: #{description}",
       cleared: transaction[:settled].present? ? 'Cleared' : 'Uncleared',
       flag: flag
     }
