@@ -3,7 +3,7 @@
 [![Docker](https://img.shields.io/docker/build/fintechtoynab/fintech-to-ynab.svg)](https://hub.docker.com/r/fintechtoynab/fintech-to-ynab)
 [![CircleCI](https://circleci.com/gh/fintech-to-ynab/fintech-to-ynab.svg?style=svg)](https://circleci.com/gh/fintech-to-ynab/fintech-to-ynab)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fintech-to-ynab/fintech-to-ynab)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/thomaspurchas/fintech-to-ynab)
 
 Automatically push Monzo and Starling transactions to YNAB in realtime. Also import historical transactions for many more banks.
 
