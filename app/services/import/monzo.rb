@@ -105,9 +105,15 @@ class Import::Monzo
   def transaction_hash(transaction)
     description, flag = description_and_flag(transaction)
 
+    amount = transaction[:amount] * 10
+
+    if ENV['MONZO_AMOUNT_MULTIPLIER'].present?
+      amount = amount * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
+    end
+
     {
-      id: "M#{transaction[:id]}",
-      amount: transaction[:amount] * 10,
+      id: "MONZO:#{transaction[:id]}",
+      amount: amount,
       payee_name: payee_name(transaction),
       date: Time.parse(transaction[:created]).to_date,
       description: description,
