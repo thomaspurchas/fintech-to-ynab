@@ -23,7 +23,7 @@ class Import::Monzo
       ynab_transactions = ynab_client.transactions(since_date: @from, account_id: @ynab_account_id)
 
       ynab_transactions_by_id = ynab_transactions.map{|t| [t.import_id, t] }.to_h
-      monzo_transactions_by_id = transactions.reject { |t| t[:decline_reason].present? || t[:amount] == 0 }.map{|t| ["M#{t[:id]}", t] }.to_h
+      monzo_transactions_by_id = transactions.reject { |t| t[:decline_reason].present? || t[:amount] == 0 }.map{|t| ["MONZO:#{t[:id]}", t] }.to_h
 
       ynab_transactions.each do |transaction|
         monzo_transaction = monzo_transactions_by_id[transaction.import_id]
