@@ -59,12 +59,12 @@ class Import::Monzo
       end
 
       monzo_transactions_by_id.each do |id, transaction|
-        ynab_transaction = ynab_transactions_by_id["M#{transaction[:id]}"]
+        ynab_transaction = ynab_transactions_by_id["MONZO#{transaction[:id]}"]
 
         if ynab_transaction.present?
-          puts "M#{transaction[:id]} OK"
+          puts "MONZO#{transaction[:id]} OK"
         else
-          puts "#{"M#{transaction[:id]}"} NOT FOUND IN YNAB"
+          puts "#{"MONZO#{transaction[:id]}"} NOT FOUND IN YNAB"
           ap transaction
         end
       end
