@@ -108,12 +108,13 @@ class Import::Monzo
     original_amount = transaction[:amount] * 10
 
     if ENV['MONZO_AMOUNT_MULTIPLIER'].present?
-      amount = original_amount * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
+      amount = transaction[:amount] * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
+      amount = amount.round(half: :even) * 10
     end
 
     {
       id: "MONZO:#{transaction[:id]}",
-      amount: amount.round(half: :even),
+      amount: amount,
       payee_name: payee_name(transaction),
       date: Time.parse(transaction[:created]).to_date,
       description: "£#{original_amount/1000.0}: #{description}",

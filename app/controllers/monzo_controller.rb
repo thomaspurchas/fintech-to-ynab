@@ -40,7 +40,8 @@ class MonzoController < ApplicationController
     original_amount = webhook[:data][:amount] * 10
 
     if ENV['MONZO_AMOUNT_MULTIPLIER'].present?
-      amount = original_amount * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
+      amount = transaction[:amount] * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
+      amount = amount.round(half: :even) * 10
     end
 
     ynab_creator = YNAB::TransactionCreator.new(
