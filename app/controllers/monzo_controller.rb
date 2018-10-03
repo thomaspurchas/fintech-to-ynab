@@ -38,16 +38,17 @@ class MonzoController < ApplicationController
     ynab_account_id = params[:ynab_account_id] || ENV['YNAB_MONZO_ACCOUNT_ID'] || ENV['YNAB_ACCOUNT_ID']
 
     original_amount = webhook[:data][:amount] * 10
+    amount = original_amount
 
     if ENV['MONZO_AMOUNT_MULTIPLIER'].present?
-      amount = transaction[:amount] * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
+      amount = webhook[:data][:amount] * ENV['MONZO_AMOUNT_MULTIPLIER'].to_f
       amount = amount.round(half: :even) * 10
     end
 
     ynab_creator = YNAB::TransactionCreator.new(
       id: "MONZO:" + webhook[:data][:id],
       date: Time.parse(webhook[:data][:created]).to_date,
-      amount: amount.round(half: :even),
+      amount: amount,
       payee_name: payee_name,
       description: "£#{original_amount/1000.0}: #{description.strip}",
       cleared: !foreign_transaction,
