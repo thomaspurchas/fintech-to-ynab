@@ -29,7 +29,7 @@ command :monzo do |c|
   c.option '--ynab_account_id STRING', String, 'Your YNAB account ID for this Monzo account'
   c.option '--from INTEGER', Integer, 'From when? (Unix Timestamp)'
   c.action do |args, options|
-    options.default from: 1.week.ago.to_i
+    options.default from: 2.week.ago.to_i
     options.from = Time.at(options.from) if options.from.present?
 
     raise ArgumentError.new("token is required!") unless options.token
