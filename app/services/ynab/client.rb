@@ -35,8 +35,7 @@ class YNAB::Client
         payee_name: transaction[:payee_name],
         cleared: transaction[:cleared] ? "Cleared" : 'Uncleared',
         memo: transaction[:description],
-        flag_color: transaction[:flag],
-        import_id: transaction[:id]
+        flag_color: transaction[:flag]
       }
     }).data.transaction
   rescue => e
@@ -56,8 +55,7 @@ class YNAB::Client
         payee_name: payee_name,
         cleared: cleared ? "Cleared" : 'Uncleared',
         memo: memo,
-        flag_color: flag,
-        import_id: id
+        flag_color: flag
       }
     }).data.transaction
   rescue => e
