@@ -8,8 +8,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rest-client'
-gem 'rails', '~> 5.2.0'
-gem 'puma', '~> 3.7'
+gem 'rails', '~> 6.1.7', '>= 6.1.7.3'
+gem 'puma', '~> 4.3', '>= 4.3.12'
 gem 'money'
 
 # Fintech Providers
@@ -29,13 +29,13 @@ end
 
 group :development, :test do
   gem 'listen'
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '>= 2.7.6'
   gem 'rubocop-rails_config'
 end
 
 group :test do
   gem 'rspec-rails'
-  gem 'codecov'
+  gem 'codecov', '>= 0.1.21'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
