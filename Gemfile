@@ -9,7 +9,7 @@ end
 
 gem 'rest-client'
 gem 'rails', '~> 5.2.0'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 4.3', '>= 4.3.8'
 gem 'money'
 
 # Fintech Providers
