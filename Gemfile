@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rest-client'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 7.0.0'
 gem 'puma', '~> 3.7'
 gem 'money'
 
@@ -30,7 +30,7 @@ end
 group :development, :test do
   gem 'listen'
   gem 'dotenv-rails'
-  gem 'rubocop-rails_config'
+  gem 'rubocop-rails_config', '>= 1.15.0'
 end
 
 group :test do
