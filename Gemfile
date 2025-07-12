@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rest-client'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 7.1.0'
 gem 'puma', '~> 3.7'
 gem 'money'
 
@@ -29,13 +29,13 @@ end
 
 group :development, :test do
   gem 'listen'
-  gem 'dotenv-rails'
-  gem 'rubocop-rails_config'
+  gem 'dotenv-rails', '>= 2.7.6'
+  gem 'rubocop-rails_config', '>= 1.15.0'
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 3.8.1'
   gem 'codecov'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', '>= 1.2018.6', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
