@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rest-client'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 7.1.5', '>= 7.1.5.2'
 gem 'puma', '~> 3.7'
 gem 'money'
 
